@@ -22,6 +22,9 @@ La función [**chsgroups()**](https://github.com/EfraCL/Conductividad_hidraulica
 
 ## Ejemplos
 
+Los datos con los que trabajaremos en los siguientes ejemplos ([prueba_chs.csv](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chs.csv) y [prueba_chsgroups.csv](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv)) han sido cedidos por el [Grupo de Erosión y Conservación De Suelos y Agua](http://www.soilwaterconservation.es/) del [CEBAS-CSIC](http://www.cebas.csic.es/index.html).
+
+
 ### Función chs()
 Para ver cómo trabaja la función chsgroups() copia y ejecuta el siguiente código: 
 
