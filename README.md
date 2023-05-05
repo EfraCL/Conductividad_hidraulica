@@ -8,10 +8,17 @@ Por su parte, la función *chsgroups()* no es más que una función que contiene
 
 ## Argumentos de las funciones
 
-La función **chs()** admite dos argumentos:
-- **df**: es el vector a utilizar para realizar los subconjuntos sobre los que se aplicará una función determinada.
-- **amplitud**: este argumento hace referencia a, como su propio nombre indica, a la amplitud de los subconjuntos sobre los que
-queremos aplicar una función concreta. Por ejemplo, si queremos aplicar la función sum() en subconjuntos de 3, 4 o 5 elementos.
+La función **chs()** admite los siguientes argumentos:
+- **df**: dataframe que contiene, entre otra información, los datos de volumen de agua usado en los ensayos y el tiempo necesario para su total infiltración en el suelo.
+- **vol**: nombre de la columna del dataframe que contiene la información sobre el volumen de agua utilizado (en litros) en los ensayos. El nombre debe indicarse entrecomillado o por medio de un vector de longitud 1 y de tipo caracter.
+- **time**: nombre de la columna del dataframe que contiene la información sobre el tiempo (en segundos) que tardó el agua en infiltrarse en los ensayos. El nombre debe indicarse entrecomillado o por medio de un vector de longitud 1 y de tipo caracter.
+- **radio**: vector numérico de longitud 1 indicando el radio (en metros) del anillo utilizado para hacer los ensayos de conductividad hidráulica saturada.
+- **vol.converse**: por defecto este argumento es TRUE. Indica que el volumen de la columna especificada en el argumento *vol* está expresado en mililitros y por tanto, debe transformarse a litros.
+- **time.converse**: por defecto este argumento es TRUE. Indica que el tiempo de la columna especificada en el argumento *time* está expresado en minutos y por tanto, debe transformarse a segundos.
+
+La función **chsgroups()** admite los mismos argumentos que *chs()* y dos nuevos:
+- **group.by**: 
+- **unit**: 
 
 ## Observaciones
 Por defecto la función aplica la función sum() a cada subconjunto de datos, ya que es la función necesaria para
