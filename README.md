@@ -16,7 +16,7 @@ La función [**chs()**](https://github.com/EfraCL/Conductividad_hidraulica/blob/
 - **vol.converse**: por defecto este argumento es TRUE. Indica que el volumen de la columna especificada en el argumento *vol* está expresado en mililitros y por tanto, debe transformarse a litros.
 - **time.converse**: por defecto este argumento es TRUE. Indica que el tiempo de la columna especificada en el argumento *time* está expresado en minutos y por tanto, debe transformarse a segundos.
 
-La función [**chsgroups()**](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) admite los mismos argumentos que *chs()* y dos nuevos:
+La función [**chs.groups()**](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) admite los mismos argumentos que *chs()* y dos nuevos:
 - **group.by**: vector de tipo caracter que recoge los nombres de las columnas del dataframe del argumento *df* que se quieren utilizar para agrupar los valores de conductividad hidráulica saturada.
 - **unit**: vector de tipo caracter y longitud 1 que indica las unidades en las que se debe expresar el valor de conductividad hidráulica saturada. Las opciones son: "mms-1" y "cmh-1"). Por defecto la conductividad hidráulica saturada se expresa en mm s-1.
 
