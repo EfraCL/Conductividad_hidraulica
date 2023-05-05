@@ -26,11 +26,88 @@ La función [**chsgroups()**](https://github.com/EfraCL/Conductividad_hidraulica
 Para ver cómo trabaja la función chs() descarga [este dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chs.csv) y ejecuta el siguiente código:
 
 ~~~~
-x <- read.csv
+# Cargamos los datos
+link <- "https://raw.githubusercontent.com/EfraCL/Conductividad_hidraulica/main/prueba_chs.csv"
+x <- read.csv(link, header = T, sep = ";", dec = ",")
+rm(link)
+
+# Definimos la función chs()
+chs <- function(df, vol, time, radio, vol.converse = T, time.converse = T ){
+  
+  if(vol.converse == T){
+    df[vol] <- df[vol]*.001
+  } 
+  
+  if (time.converse == T) {
+    df[time] <- df[time]*60
+  }
+  
+  df$cs_I <- cumsum(df[[vol]] / (pi * radio^2)) # Calculo de infiltracion acumulada
+  df[vol] <- NULL
+  
+  df$cs_t <- cumsum(df[[time]]) # Calculo de tiempo acumulado
+  df[time] <- NULL
+  
+  modelo <- lm(cs_I ~ cs_t, data = df)
+  IR <- modelo$coefficients[[2]]
+  rm(modelo, df)
+  
+  alfa <- .0262 + .0035 * log(IR)
+  ks <- IR / (.467 * (1 + 2.92 / (radio * alfa)))
+  rm(alfa, IR)
+  
+  ks
+}
+
+# Prueba de chs()
+chs(df = x, vol = "Vol", time = "t", radio = .05)
 
 ~~~~
 
 ### Función chsgroups()
 Para ver cómo trabaja la función chsgroups() descarga [este dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el script con el código de ejemplo
+
+~~~~
+link <- "https://raw.githubusercontent.com/EfraCL/Conductividad_hidraulica/main/prueba_chsgroups.csv"
+x <- read.csv(link, header = T, sep = ";", dec = ",")
+rm(link)
+
+chs.groups <- function(df, group.by ,vol, time, radio, vol.converse = T, time.converse = T, unit = "mms-1"){
+  
+  df <- df[, names(df) %in% c(group.by, vol, time)] # Eliminamos del dataframe las columnas que no interesan
+  
+  temp <- df[[group.by[1]]]
+  for (i in 2:length(group.by)){
+    temp <- paste(temp, df[[i]]) # Creamos un vector que aglutine todas las variables de agrupación
+  }
+  
+  df$grouping <- temp # Incluimos el vector anterior en la columna del dataframe
+  rm(temp)
+  
+  for (i in group.by){
+    x[[i]] <- NULL # Eliminamos las columnas que no nos interesan
+  }
+  rm(group.by)
+  
+  list_temp <- split(df, df["grouping"]) # Dividimos el dataframe en base a la nueva columna creada
+  temp <- c()
+  df_def <- data.frame(Factor = names(list_temp), Ks_mm_s = NA) # Creamos un nuevo dataframe donde almacenaremos la Ks
+  for (i in names(list_temp)){
+    temp <- list_temp[[i]]
+    Ks <- chs(df = temp, vol = "Vol", time = "t", radio = .05)
+    if(unit == "mms-1") {
+      df_def[df_def$Factor == i, 2] <- Ks
+    } else if (unit == "cmh-1"){
+      df_def[df_def$Factor == i, 2] <- Ks * 360
+    }
+  }
+  
+  print(df_def)
+}
+
+grupos <- c("Año", "Zona", "Bloque", "Tratamiento", "Repeticion")
+chs.groups(df = x, group.by = grupos, vol = "Vol", time = "t", radio = .05, unit = "cmh-1")
+~~~~
+
 
 ¡Espero que os sea de utilidad! :P
