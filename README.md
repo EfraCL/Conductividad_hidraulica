@@ -1,21 +1,15 @@
-chs() & chs
-# Conductividad_hidraulica
-Creación de una o varias funciones en R para calcular la conducitividad hidráulica saturada
-
-La metodología para determinar la conductividad hidráulica saturada puede consultarse en la página 227 del [Handbook of Plant and Soil Analysis for Agricultural Systems](https://zenodo.org/record/2553445)
-
-
-*intensidad()*
+*chs()* & *chsgroups()*
 
 ## Finalidad
-El objetivo principal de esta función es calcular la lluvia caída durante un intervalo de tiempo cualquiera, es decir, para calcular la intensidad de la lluvia.
 
-Para ello, la función que he creado se basa en que un conjunto de datos (o vector) de longitud n puede ser subdivido en [n-(A-1)] 
-subconjuntos consecutivos de amplitud A.
+El objetivo de la función *chs()* es calcular la conductividad hidráulica saturada de un suelo, siguiendo la metodología establecida en el [Handbook of Plant and Soil Analysis for Agricultural Systems](https://zenodo.org/record/2553445) (página 227).
 
-## Argumentos de la función
-La función **intensidad()** admite dos argumentos:
-- **x**: es el vector a utilizar para realizar los subconjuntos sobre los que se aplicará una función determinada.
+Por su parte, la función *chsgroups()* no es más que una función que contiene la función *chs()* y que ha sido diseñada para agrupar en uno o más factores (variables categóricas) los resultados de conductividad hidráulica saturada. De hecho, para poder utilizar esta última función, es indispensable haber definido previamente la función *chs()* en el entorno de trabajo.
+
+## Argumentos de las funciones
+
+La función **chs()** admite dos argumentos:
+- **df**: es el vector a utilizar para realizar los subconjuntos sobre los que se aplicará una función determinada.
 - **amplitud**: este argumento hace referencia a, como su propio nombre indica, a la amplitud de los subconjuntos sobre los que
 queremos aplicar una función concreta. Por ejemplo, si queremos aplicar la función sum() en subconjuntos de 3, 4 o 5 elementos.
 
