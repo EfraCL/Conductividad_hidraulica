@@ -23,7 +23,7 @@ La función [**chsgroups()**](https://github.com/EfraCL/Conductividad_hidraulica
 ## Ejemplos
 
 ### Función chs()
-Para ver cómo trabaja la función chs() descarga [este dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chs.csv) y ejecuta el siguiente código:
+Para ver cómo trabaja la función chsgroups() copia y ejecuta el siguiente código: 
 
 ~~~~
 # Cargamos los datos
@@ -61,17 +61,21 @@ chs <- function(df, vol, time, radio, vol.converse = T, time.converse = T ){
 
 # Prueba de chs()
 chs(df = x, vol = "Vol", time = "t", radio = .05)
-
 ~~~~
+
+Puedes descargar directamente el [dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el [script](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) con las funciones directamente a tu PC.
+
 
 ### Función chsgroups()
-Para ver cómo trabaja la función chsgroups() descarga [este dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el script con el código de ejemplo
+Para ver cómo trabaja la función chsgroups() copia y ejecuta el siguiente código: 
 
 ~~~~
+# Cargamos los datos
 link <- "https://raw.githubusercontent.com/EfraCL/Conductividad_hidraulica/main/prueba_chsgroups.csv"
 x <- read.csv(link, header = T, sep = ";", dec = ",")
 rm(link)
 
+# Definimos la función chs.groups(). IMPORTANTE: no olvides de definir también la función chs()
 chs.groups <- function(df, group.by ,vol, time, radio, vol.converse = T, time.converse = T, unit = "mms-1"){
   
   df <- df[, names(df) %in% c(group.by, vol, time)] # Eliminamos del dataframe las columnas que no interesan
@@ -102,12 +106,14 @@ chs.groups <- function(df, group.by ,vol, time, radio, vol.converse = T, time.co
     }
   }
   
-  print(df_def)
+  df_def
 }
 
+# Prueba de chsgroups()
 grupos <- c("Año", "Zona", "Bloque", "Tratamiento", "Repeticion")
 chs.groups(df = x, group.by = grupos, vol = "Vol", time = "t", radio = .05, unit = "cmh-1")
 ~~~~
 
+También puedes descargar el [dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el [script](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) con las funciones directamente a tu PC.
 
 ¡Espero que os sea de utilidad! :P
