@@ -63,7 +63,7 @@ chs <- function(df, vol, time, radio, vol.converse = T, time.converse = T ){
 chs(df = x, vol = "Vol", time = "t", radio = .05)
 ~~~~
 
-Puedes descargar directamente el [dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el [script](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) con las funciones directamente a tu PC.
+Puedes descargar el [dataset](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/prueba_chsgroups.csv) y el [script](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Script_chs_chsgroups_functions.R) con las funciones directamente a tu PC.
 
 
 ### Función chsgroups()
