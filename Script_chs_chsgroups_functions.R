@@ -72,4 +72,7 @@ chs.groups <- function(df, group.by ,vol, time, radio, vol.converse = T, time.co
     rm(i, e, Ks, ks_column, time, unit, vol)
     df_def
     }
+  else {
+    print("Error: Debes definir primero la función chs()")
   }
+}
