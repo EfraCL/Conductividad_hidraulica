@@ -4,7 +4,7 @@
 
 El objetivo de la función *chs()* es calcular la conductividad hidráulica saturada de un suelo, siguiendo la metodología establecida en [Handbook of Plant and Soil Analysis for Agricultural Systems](https://zenodo.org/record/2553445) (página 227).
 
-Por su parte, la función *chs.groups()* no es más que que ha sido diseñada para agrupar en uno o más factores (variables categóricas) los resultados de conductividad hidráulica saturada obtenidos al aplicar la función *chs()*. De hecho, para poder utilizar esta última función, es indispensable haber definido previamente la función *chs()* en el entorno de trabajo.
+Por su parte, la función *chs.groups()* no es más que una función que ha sido diseñada para agrupar en uno o más factores (variables categóricas) los resultados de conductividad hidráulica saturada obtenidos al aplicar la función *chs()*. De hecho, para poder utilizar esta última función, es indispensable haber definido previamente la función *chs()* en el entorno de trabajo.
 
 ## Argumentos de las funciones
 
