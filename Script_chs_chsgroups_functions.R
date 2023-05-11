@@ -61,7 +61,9 @@ chs.groups <- function(df, group.by ,vol, time, radio, vol.converse = T, time.co
     
     for (i in names(list_temp)){
       temp <- list_temp[[i]]
-      Ks <- chs(df = temp, vol = "Vol", time = "t", radio = .05)
+      Ks <- chs(df = temp, vol = vol, time = time, 
+                radio = radio, vol.converse = vol.converse,
+                time.converse = time.converse)
       if(unit == "mms-1") {
         df_def[e, ks_column] <- Ks
       } else if (unit == "cmh-1"){
