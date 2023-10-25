@@ -9,6 +9,11 @@ chs <- function(df, vol, time, radio, vol.converse = T, time.converse = T ){
     df[time] <- df[time]*60
   }
   
+  CompleteObs <- !(is.na(df[[vol]]) | is.na(df[[time]])) # Para posteriormente eliminar aquellas observaciones de tiempo y volumen INCOMPLETAS,
+  # evitando prblemas con la función cumsum(); ¿En qué fila la variable tiempo o la de volumen tiene NA's?
+  df <- df[CompleteObs, ]
+  rm(CompleteObs)
+  
   df$cs_I <- cumsum(df[[vol]] / (pi * radio^2)) # Calculo de infiltracion acumulada
   df[vol] <- NULL
   
