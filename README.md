@@ -1,4 +1,4 @@
-*chs()* & *chsgroups()*
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/EfraCL/Conductividad_hidraulica/blob/main/Readme.eng.md)
 
 ## Finalidad
 
